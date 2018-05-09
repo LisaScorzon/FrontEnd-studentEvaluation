@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { getBatch } from '../actions/batches'
-import { createStudent, removeStudent } from '../actions/students'
+import { createStudent, removeStudent, getStudents } from '../actions/students'
 
 import Student from './Student'
 import StudentForm from './StudentForm'
@@ -12,85 +12,73 @@ import StudentForm from './StudentForm'
 
 class StudentList extends PureComponent {
 
-    state = {
-      edit: false
-    }
-  
-    static propTypes = {
-      batch: PropTypes.shape({
-        id: PropTypes.number.isrequired,
-        startDate: PropTypes.string.isRequired,
-        endDate: PropTypes.string.isRequired,
-        students: PropTypes.array.isRequired
-      }).isRequired
-    }
 
-    toggleEdit = () => {
-        this.setState({
-          edit: !this.state.edit
-        })
-      }
+    // toggleEdit = () => {
+    //     this.setState({
+    //       edit: !this.state.edit
+    //     })
+    //   }
     
-      componentWillMount(props) {
+      componentWillMount() {
+        this.props.getStudents(this.props.match.params.BatchId)
         this.props.getBatch(this.props.match.params.id)
       }
     
-      createStudent = (student, batchId) => {
+      createStudent = (student, batchNumber) => {
         this.props.createStudent(student, this.props.match.params.id)
     
       }
     
-      removeStudent = (studentId) => {
-        this.props.removeStudent(studentId)
+      removeStudent = (userId) => {
+        this.props.removeStudent(userId)
       }
     
 
 
     render() {
 
-        const { batch } = this.props
-        console.log(this.props.batch)
-        if(!batch) return null
+        const  {students, batch}  = this.props
+
+        console.log(students)
+        //if(!batch) return null
     
     return(
-         <div>
-             
-            <div>
+       <div>
+          
+            
     
-            <h1 className="batch-title">Batch #{batch.batchId}</h1>
+            <h2 className="batch-title">Batches no. {batch.batchNumber} </h2>
     
-            <button onClick={this.toggleEdit} className="new-student-btn">Add a student</button>
-            </div>
-
-                <div className="student-list">
-             {
-                batch.students.map((student, index) => (
-                <div className="student">
-
-                 <Student
-
-                    key={index} batch={this.props.batch}
-                    fullName={student.fullName} 
-                    photo={
-                    student.photo.indexOf("jpg") >= 0 || student.photo.indexOf("png") >= 0 }
-                />
-
-                    <div className="links">
-                     <Link to={ `/students/${student.id}` } className="view-link">View</Link>
-                     <button onClick={ () => this.removeStudent(student.id) } className="remove-link">
-                    Remove
-                     </button>
+            <div className="flex-container">
+         
+                
+                {
+                students
+                .map((student,index) => (
+                
+                <div className="student" key={index}>
+                  <Link to={ `/students/${student.userId}` } className="student-link">
+                  <div className="student-header">
+                  <h3>Student Name: {student.full_name}</h3>
                     </div>
 
+                 </Link>
+                    </div>
+                    ))
+                }
+                </div>
+                <StudentForm />
+                
+                <button onClick={ () => this.removeStudent(students.userid) } className="remove-link">
+                Remove
+                 </button>    
+           
 
-                 </div>
-                 ))
-             }
-         
-            </div>
+           </div>
+          
        
-        </div>
         )
+        
          
     }
 
@@ -99,9 +87,10 @@ class StudentList extends PureComponent {
 
     const mapStateToProps = (state, props) => {
     return {
-    batches: state.batches
+    batch: state.batch,
+    students: state.students
         }
 }
 
-export default connect(mapStateToProps, { getBatch, createStudent, removeStudent })(StudentList)
+export default connect(mapStateToProps, { getStudents, getBatch, createStudent, removeStudent })(StudentList)
 

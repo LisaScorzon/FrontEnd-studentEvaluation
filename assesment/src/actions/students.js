@@ -8,6 +8,7 @@ export const CREATED_STUDENT = 'CREATED_STUDENT'
 export const GET_STUDENT = 'GET_STUDENT'
 export const REMOVED_STUDENT = 'REMOVED_STUDENT'
 export const UPDATED_STUDENT = 'UPDATED_STUDENT'
+export const GET_STUDENTS = 'GET_STUDENTS'
 
 export const createStudent = (student, userId) => (dispatch, getState) => {
   const state = getState()
@@ -31,6 +32,20 @@ export const getStudent = (userId) => (dispatch, getState) => {
       }))
       .catch(err => alert(err))
   }
+  
+  export const getStudents = () => (dispatch, getState) => {
+    const state = getState()
+    request
+	.get(`${baseUrl}/students`)
+	.then(result => {
+		dispatch({
+			type: GET_STUDENTS,
+			payload: result.body.students
+		})
+    })
+	.catch(err => console.error(err))
+}
+
 
 
 export const removeStudent = (userId) => (dispatch, getState) => {
