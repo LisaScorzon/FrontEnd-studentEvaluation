@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { getBatch } from '../actions/batches'
-import { createStudent, removeStudent, getStudents } from '../actions/students'
+import { addStudent, removedStudent, getStudents } from '../actions/students'
 
 import Student from './Student'
 import StudentForm from './StudentForm'
@@ -21,36 +21,29 @@ class StudentList extends PureComponent {
     
       componentWillMount() {
         this.props.getStudents(this.props.match.params.BatchId)
-        this.props.getBatch(this.props.match.params.id)
+        this.props.getBatch(this.props.match.params.BatchId)
+        //this.props.createdStudent(this.props.match.parmas.BatchId)
       }
     
-      createStudent = (student, batchNumber) => {
-        this.props.createStudent(student, this.props.match.params.id)
-    
-      }
-    
-      removeStudent = (userId) => {
-        this.props.removeStudent(userId)
-      }
-    
+  
 
 
     render() {
 
-        const  {students, batch}  = this.props
+        const  {students, batch, batches }  = this.props
 
         console.log(students)
-        //if(!batch) return null
+        if(!batch) return null
     
     return(
        <div>
           
             
     
-            <h2 className="batch-title">Batch no. {students.batchNumber} </h2>
+            <h2 className="batch-title">Batch no. {batch.batchNumber} </h2>
     
             <div className="flex-container">
-         
+            <StudentForm onSubmit={this.props.createdStudent} batch={batch}/>
                 
                 {
                 students
@@ -72,7 +65,7 @@ class StudentList extends PureComponent {
                     ))
                 }
                 </div>
-                <StudentForm />
+                {/* <StudentForm /> */}
                 
                 <button onClick={ () => this.removeStudent(students.userid) } className="remove-link">
                 Remove
@@ -97,5 +90,5 @@ class StudentList extends PureComponent {
         }
 }
 
-export default connect(mapStateToProps, { getStudents, getBatch, createStudent, removeStudent })(StudentList)
+export default connect(mapStateToProps, { getStudents, getBatch, addStudent, removedStudent })(StudentList)
 

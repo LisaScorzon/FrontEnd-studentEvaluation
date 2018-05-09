@@ -17,6 +17,7 @@ export const GET_BATCH = 'GET_BATCH'
 
 export const addBatch = (batch) => (dispatch) => {
     request
+
     .post(`${baseUrl}/batches`)
     .send(batch)
     .then(result => {

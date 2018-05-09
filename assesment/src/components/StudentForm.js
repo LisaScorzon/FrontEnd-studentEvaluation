@@ -1,55 +1,68 @@
 import React, { PureComponent} from 'react'
+import {addStudent} from '../actions/students'
+import {connect} from 'react-redux'
+import Button from 'material-ui/Button';
+import TextField from 'material-ui/TextField'
+
+
+
 
 class StudentForm extends PureComponent {
   state={}
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.onSubmit(this.state)
+    this.props.addStudent(this.state)
   }
 
   handleChange = (e) => {
     const {name, value} = e.target
+   
+    
     this.setState({
+        batch:1,
       [name]: value
     })
   }
-
+  
   render() {
-    const initialValues = this.props.initialValues || {}
-    return(
+      console.log(this.state)
+    
+      return(
       <form onSubmit={this.handleSubmit}>
-        <div className="input">
-          <label htmlFor="fullName">Full Name: </label>
-          <input
-            name="fullName"
-            id="fullName"
-            value={ this.state.fullName || initialValues.fullName || ''}
-            onChange={ this.handleChange }
-          />
-        </div>
-
-        
-
-        <div className="input">
-        <label htmlFor="photo">Add a Profile Photo URL: </label>
-        <input
-          name="photo"
-          id="Photo"
-          value={ this.state.photo || initialValues.photo || ''}
-          onChange={ this.handleChange }
+      <TextField
+            id='student' name='fullName'
+            label='add name here' value={this.state.fullName || ''}
+            onChange={this.handleChange}
         />
-        </div>
+        
+        <TextField
+            id='photo' name='photo'
+            label='add photo here' value={this.state.photo || ''}
+            onChange={this.handleChange}
+        />
 
-        <button
-          className="submit"
-          type="submit">
-          Save
-        </button>
+    
+
+       <Button
+            type='submit' color="secondary"
+            variant="raised" className="add_student"
+        >
+            Add Student
+        </Button>
       </form>
     )
   }
 
 }
 
-export default StudentForm
+const mapStateToProps = function (state) {
+	return {
+        students: state.students,
+        batch: state.batch
+	}
+}
+
+export default connect(mapStateToProps,
+     {addStudent}
+)(StudentForm)
