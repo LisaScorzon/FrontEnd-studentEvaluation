@@ -12,7 +12,7 @@ class OverviewPage extends PureComponent {
  
 
     componentWillMount() {
-        this.props.getBatches(this.props.match.params.id)
+        this.props.getBatches(this.props.match.params.batchNumber)
     }
 
     
@@ -42,9 +42,9 @@ class OverviewPage extends PureComponent {
                     .map((batch, index) => (
       
                       <div className="batch" key={index}>
-                      <Link to={ `/batches/${batch.id}` } className="batch-link">
+                      <Link to={ `/batches/${batch.batchNumber}` } className="batch-link">
                         <div className="batch-header">
-                          <h3>Batch No. {batch.id}</h3>
+                          <h3>Batch No. {batch.batchNumber}</h3>
                         </div>
       
                         

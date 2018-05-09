@@ -29,13 +29,13 @@ export const addBatch = (batch) => (dispatch) => {
 }
 
 
-  export const getBatch = (id) => (dispatch) => {
+  export const getBatch = (batchId) => (dispatch) => {
 	request
-	.get(`${baseUrl}/batches/${id}`)
+	.get(`${baseUrl}/batches/${batchId}`)
     .then(result => {
       dispatch({
         type: GET_BATCH,
-		payload: result.body
+		payload: result.body.batch
       })
     })
     .catch(err => console.error(err))

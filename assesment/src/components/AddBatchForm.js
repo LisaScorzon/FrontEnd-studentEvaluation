@@ -29,31 +29,23 @@ class BatchForm extends PureComponent {
       return(
         <form onSubmit={this.handleSubmit}>
         <TextField
-            id='batch'
-            name='batchId'
-            label='Batch Id'
-            value={this.state.batchId || ''}
+            id='batch' name='batchNumber'
+            label='Batch Number' value={this.state.batchNumber || ''}
             onChange={this.handleChange}
         />
         <TextField
-          id='startDate'
-          name='start_date'
-          label='Start Date'
-          value={this.state.start_date || ''}
+          id='startDate' name='start_date'
+          label='Start Date' value={this.state.start_date || ''}
           onChange={this.handleChange}
           />
         <TextField
-            id='endDate'
-            name='end_date'
-            label='End Date'
-            value={this.state.end_date || ''}
+            id='endDate' name='end_date'
+            label='End Date' value={this.state.end_date || ''}
             onChange={this.handleChange}
         />
         <Button
-            type='submit'
-            color="secondary"
-            variant="raised"
-            className="add_batch"
+            type='submit' color="secondary"
+            variant="raised" className="add_batch"
         >
             Add batch
         </Button>
