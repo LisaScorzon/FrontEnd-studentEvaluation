@@ -13,11 +13,11 @@ import StudentForm from './StudentForm'
 class StudentList extends PureComponent {
 
 
-    // toggleEdit = () => {
-    //     this.setState({
-    //       edit: !this.state.edit
-    //     })
-    //   }
+    toggleEdit = () => {
+        this.setState({
+          edit: !this.state.edit
+        })
+      }
     
       componentWillMount() {
         this.props.getStudents(this.props.match.params.BatchId)
@@ -47,7 +47,7 @@ class StudentList extends PureComponent {
           
             
     
-            <h2 className="batch-title">Batches no. {batch.batchNumber} </h2>
+            <h2 className="batch-title">Batch no. {students.batchNumber} </h2>
     
             <div className="flex-container">
          
@@ -61,7 +61,12 @@ class StudentList extends PureComponent {
                   <div className="student-header">
                   <h3>Student Name: {student.full_name}</h3>
                     </div>
-
+                    
+                    <div
+					 className="photo" key={index}>
+					<img src = {student.photo} />
+				</div>
+                 
                  </Link>
                     </div>
                     ))
