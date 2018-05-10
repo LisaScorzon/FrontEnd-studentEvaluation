@@ -18,7 +18,7 @@ class OverviewPage extends PureComponent {
     
 
     render() {
-         const {batches} = this.props
+         const {batches, student} = this.props
          console.log(batches)
       
          
@@ -44,7 +44,8 @@ class OverviewPage extends PureComponent {
                       <div className="batch" key={index}>
                       <Link to={ `/batches/${batch.batchNumber}` } className="batch-link">
                         <div className="batch-header">
-                          <h3>Batch No. {batch.batchNumber}</h3>
+                        <h3>Batch Number: {student.batchNumber}</h3>
+                          <h3>Student Id: {student.studentNumber}</h3>
                         </div>
       
                         
