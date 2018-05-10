@@ -8,7 +8,7 @@ const baseUrl = 'http://localhost:4002'
 export const ADD_STUDENT = 'ADD_STUDENT'
 export const GET_STUDENT = 'GET_STUDENT'
 export const REMOVED_STUDENT = 'REMOVED_STUDENT'
-export const UPDATED_STUDENT = 'UPDATED_STUDENT'
+export const UPDATE_STUDENT = 'UPDATE_STUDENT'
 export const GET_STUDENTS = 'GET_STUDENTS'
 
 export const addStudent = (student) => (dispatch) => {
@@ -28,19 +28,25 @@ export const addStudent = (student) => (dispatch) => {
 }
 
 
-export const getStudent = (studentNumber) => (dispatch, getState) => {
-  const state = getState()
+export const getStudent = (studentNumber) => (dispatch) => {
+ 
+  console.log('actionOneStudent')
+    
   request
+      
       .get(`${baseUrl}/students/${studentNumber}`)
-      .then(response => dispatch({
+      .then(result => {
+        dispatch({
         type: GET_STUDENT,
-        payload: response.body
-      }))
+            payload: result.body
+        })
+      })
       .catch(err => alert(err))
   }
   
   export const getStudents = () => (dispatch, getState) => {
     const state = getState()
+    console.log('all students')
     request
 	.get(`${baseUrl}/students`)
 	.then(result => {
@@ -71,7 +77,7 @@ export const updateStudent = (studentNumber, updates) => (dispatch, getState) =>
     .put(`${baseUrl}/students/${studentNumber}`)
     .send(updates)
     .then(response => dispatch ({
-      type: UPDATED_STUDENT,
+      type: UPDATE_STUDENT,
       payload: response.body
     }))
 }

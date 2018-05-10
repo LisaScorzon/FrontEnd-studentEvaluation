@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { getBatch } from '../actions/batches'
-import { addStudent, removedStudent, getStudents } from '../actions/students'
+import { addStudent, removedStudent, getStudents, getStudent } from '../actions/students'
 
 import Student from './Student'
 import StudentForm from './StudentForm'
@@ -20,7 +20,7 @@ class StudentList extends PureComponent {
       }
     
       componentWillMount() {
-        this.props.getStudents(this.props.match.params.BatchId)
+        this.props.getStudents(this.props.match.params.batchNumber)
         this.props.getBatch(this.props.match.params.BatchId)
         //this.props.createdStudent(this.props.match.parmas.BatchId)
       }
@@ -32,7 +32,7 @@ class StudentList extends PureComponent {
 
         const  {students, batch, batches }  = this.props
 
-        console.log(students)
+        console.log(batch)
         if(!batch) return null
     
     return(
@@ -40,7 +40,7 @@ class StudentList extends PureComponent {
           
             
     
-            <h2 className="batch-title">Batch no. {batch.batchNumber} </h2>
+            <h2 className="batch-title"> Batch No. {batch.batchNumber} </h2>
     
             <div className="flex-container">
             <StudentForm onSubmit={this.props.createdStudent} batch={batch}/>
@@ -50,7 +50,7 @@ class StudentList extends PureComponent {
                 .map((student,index) => (
                 
                 <div className="student" key={index}>
-                  <Link to={ `/students/${student.userId}` } className="student-link">
+                  <Link to={ `/students/${student.studentNumber}` } className="student-link">
                   <div className="student-header">
                   <h3>Student Name: {student.fullName}</h3>
                     </div>
@@ -67,7 +67,7 @@ class StudentList extends PureComponent {
                 </div>
                 {/* <StudentForm /> */}
                 
-                <button onClick={ () => this.removeStudent(students.userid) } className="remove-link">
+                <button onClick={ () => this.removeStudent(students.studentNumber) } className="remove-link">
                 Remove
                  </button>    
            
@@ -93,5 +93,5 @@ const mapStateToProps = (state, props) => {
         }
 }
 
-export default connect(mapStateToProps, { getStudents, getBatch, addStudent, removedStudent })(StudentList)
+export default connect(mapStateToProps, { getStudents, getBatch, addStudent, removedStudent, getStudent })(StudentList)
 
