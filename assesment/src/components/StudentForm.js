@@ -3,6 +3,7 @@ import {addStudent} from '../actions/students'
 import {connect} from 'react-redux'
 import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField'
+import {getRandomStudent} from '../logic/algorithm'
 
 
 
@@ -20,12 +21,13 @@ class StudentForm extends PureComponent {
    
     
     this.setState({
-        batch:1,
+        //batch:1,
       [name]: value
     })
   }
   
   render() {
+    const {batch, students} = this.props
       console.log(this.state)
     
       return(
@@ -42,6 +44,12 @@ class StudentForm extends PureComponent {
             onChange={this.handleChange}
         />
 
+        <TextField
+            id='batchNumber' name='batchNumber'
+            label='add batch number' value={this.state.batchNumber || ''}
+            onChange={this.handleChange}
+        />
+
     
 
        <Button
@@ -50,6 +58,16 @@ class StudentForm extends PureComponent {
         >
             Add Student
         </Button>
+
+
+
+
+
+
+         <Button type='submit' color="secondary"
+            variant="raised" className="random_student"
+        >
+             Random Student  </Button>
       </form>
     )
   }

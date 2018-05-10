@@ -20,8 +20,9 @@ class StudentList extends PureComponent {
       }
     
       componentWillMount() {
-        this.props.getStudents(this.props.match.params.batchNumber)
+        this.props.getStudents(this.props.match.params.studentNumber)
         this.props.getBatch(this.props.match.params.BatchId)
+        //this.props.getRandomStudent(this.props.match.params.BatchId)
         //this.props.createdStudent(this.props.match.parmas.BatchId)
       }
     
@@ -30,7 +31,7 @@ class StudentList extends PureComponent {
 
     render() {
 
-        const  {students, batch, batches }  = this.props
+        const  {students, batch, batches, student }  = this.props
 
         console.log(batch)
         if(!batch) return null
@@ -40,7 +41,7 @@ class StudentList extends PureComponent {
           
             
     
-            <h2 className="batch-title"> Batch No. {batch.batchNumber} </h2>
+            
     
             <div className="flex-container">
             <StudentForm onSubmit={this.props.createdStudent} batch={batch}/>
@@ -53,11 +54,13 @@ class StudentList extends PureComponent {
                   <Link to={ `/students/${student.studentNumber}` } className="student-link">
                   <div className="student-header">
                   <h3>Student Name: {student.fullName}</h3>
+                  <h5 > Batch Number. {student.batchNumber} </h5>
                     </div>
                     
                     <div
 					 className="photo" key={index}>
 					<img src = {student.photo} />
+                    <hr/>
 				</div>
                  
                  </Link>
@@ -65,12 +68,8 @@ class StudentList extends PureComponent {
                     ))
                 }
                 </div>
-                {/* <StudentForm /> */}
+              
                 
-                <button onClick={ () => this.removeStudent(students.studentNumber) } className="remove-link">
-                Remove
-                 </button>    
-           
 
            </div>
           

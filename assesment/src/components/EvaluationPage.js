@@ -39,13 +39,14 @@ class EvaluationPage extends PureComponent {
 
 
     render(){
-        const {batch,batches, student, evaluations} = this.props
+        const {batch ,batches, student, evaluations} = this.props
         console.log(student)
 
         return(
             <Paper className="outer-paper">
                 <h1>Student Name: {student.fullName}</h1>
                 <h3>Batch Number: {student.batchNumber}</h3>
+                <h3>Student Id: {student.studentNumber}</h3>
                 <EvaluationForm/>
                 <img src = {student.photo} />
                 
