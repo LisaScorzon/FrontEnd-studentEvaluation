@@ -52,7 +52,7 @@ class StudentList extends PureComponent {
                 <div className="student" key={index}>
                   <Link to={ `/students/${student.userId}` } className="student-link">
                   <div className="student-header">
-                  <h3>Student Name: {student.full_name}</h3>
+                  <h3>Student Name: {student.fullName}</h3>
                     </div>
                     
                     <div

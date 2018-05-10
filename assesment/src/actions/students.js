@@ -28,10 +28,10 @@ export const addStudent = (student) => (dispatch) => {
 }
 
 
-export const getStudent = (userId) => (dispatch, getState) => {
+export const getStudent = (studentNumber) => (dispatch, getState) => {
   const state = getState()
   request
-      .get(`${baseUrl}/students/${userId}`)
+      .get(`${baseUrl}/students/${studentNumber}`)
       .then(response => dispatch({
         type: GET_STUDENT,
         payload: response.body
@@ -54,21 +54,21 @@ export const getStudent = (userId) => (dispatch, getState) => {
 
 
 
-export const removedStudent = (userId) => (dispatch, getState) => {
+export const removedStudent = (studentNumber) => (dispatch, getState) => {
   const state = getState()
   request
-    .delete(`${baseUrl}/students/${userId}`)
+    .delete(`${baseUrl}/students/${studentNumber}`)
     .then(response => dispatch({
       type: REMOVED_STUDENT,
-      payload: userId
+      payload: studentNumber
     }))
 
 }
 
-export const updateStudent = (userId, updates) => (dispatch, getState) => {
+export const updateStudent = (studentNumber, updates) => (dispatch, getState) => {
   const state = getState()
   request
-    .put(`${baseUrl}/students/${userId}`)
+    .put(`${baseUrl}/students/${studentNumber}`)
     .send(updates)
     .then(response => dispatch ({
       type: UPDATED_STUDENT,
