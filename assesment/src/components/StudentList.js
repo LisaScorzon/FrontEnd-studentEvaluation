@@ -51,7 +51,7 @@ class StudentList extends PureComponent {
                 .map((student,index) => (
                 
                 <div className="student" key={index}>
-                  <Link to={ `/students/${student.studentNumber}` } className="student-link">
+                  <Link to={ `/students/${student.batchNumber}` } className="student-link">
                   <div className="student-header">
                   <h3>Student Name: {student.fullName}</h3>
                   <h5 > Batch Number. {student.batchNumber} </h5>

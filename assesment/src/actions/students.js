@@ -10,6 +10,7 @@ export const GET_STUDENT = 'GET_STUDENT'
 export const REMOVED_STUDENT = 'REMOVED_STUDENT'
 export const UPDATE_STUDENT = 'UPDATE_STUDENT'
 export const GET_STUDENTS = 'GET_STUDENTS'
+export const GET_STUDENTSBATCH='GET_STUDENTSBATCH'
 
 export const addStudent = (student) => (dispatch) => {
   
@@ -43,6 +44,22 @@ export const getStudent = (studentNumber) => (dispatch) => {
       })
       .catch(err => alert(err))
   }
+
+  export const getStudentsBatch = (batchNumber) => (dispatch) => {
+ 
+    console.log('actionByBatch')
+      
+    request
+        
+        .get(`${baseUrl}/students/${batchNumber}`)
+        .then(result => {
+          dispatch({
+          type: GET_STUDENTSBATCH,
+              payload: result.body
+          })
+        })
+        .catch(err => alert(err))
+    }
   
   export const getStudents = () => (dispatch, getState) => {
     const state = getState()
