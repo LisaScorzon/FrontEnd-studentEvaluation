@@ -21,11 +21,11 @@ export const getEvaluations = (studentNumber) => (dispatch, getState) => {
     .catch(err => console.error(err))
 }
 
-export const createEvaluation = (currentColor) => (dispatch, getState) => {
+export const createEvaluation = (currentColor) => (dispatch) => {
   request
-  console.log('creat evaluation ACTION')
+  console.log('create evaluation ACTION')
     .post(`${baseUrl}/colors`)
-    .send({currentColor})
+    .send(currentColor)
     .then(result => {
       dispatch({
         type: CREATE_EVALUATION,
