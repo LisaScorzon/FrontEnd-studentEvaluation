@@ -83,7 +83,10 @@ class StudentList extends PureComponent {
 }
     
 
-    const mapStateToProps = (state, props) => {
+
+    
+
+const mapStateToProps = (state, props) => {
     return {
     batch: state.batch,
     students: state.students
