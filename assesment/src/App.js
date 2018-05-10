@@ -7,6 +7,7 @@ import SignupPage from './components/signup/SignupPage'
 import Topbar from './components/Topbar'
 import OverviewPage from './components/OverviewPage'
 import StudentList from './components/StudentList'
+import EvaluationPage from './components/evaluations/EvaluationPage'
 
 class App extends Component {
   render() {
@@ -22,7 +23,10 @@ class App extends Component {
         <Route exact path="/login" component={LoginPage} />
             <Route exact path="/signup" component={SignupPage} />
             <Route exact path="/batches" component={OverviewPage} />  
-            <Route exact path="/batches/:id" component={ StudentList } />          </main>
+            <Route exact path="/batches/:id" component={ StudentList } />   
+            {/* <Route exact path="/students/:studentNumber" component={EvaluationPage} /> */}
+            
+                   </main>
          </div>
       </Router>
     );
