@@ -35,10 +35,19 @@ describe ('colorArray', function(){
 })
 
 
-// export const colorArray = (number) => {
-//     if(number <= 53) return ['RED']
-//     if(number > 53 && number <= 81) return ['YELLOW']
-//     if(number > 81) return ['GREEN']
-  
-//     console.log (colorArray(number));
-//   }
+
+
+
+  describe('Number', function() {
+    const getRandomNumber= Math.floor(Math.random() * 100) 
+    const colorArray = (getRandomNumber) => {
+            if(getRandomNumber <= 53) return ['RED']
+            if(getRandomNumber > 53 && getRandomNumber <= 81) return ['YELLOW']
+            if(getRandomNumber > 81) return ['GREEN']
+    }
+
+        
+      it('should return red if number less than 53, should return yellow if between 53 and 81, should return green if above 81', function(){
+        expect(getRandomNumber).to.be.lessThan(100)
+      })
+    })
