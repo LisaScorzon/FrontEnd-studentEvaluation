@@ -29,7 +29,7 @@ class OverviewPage extends PureComponent {
             <div>
 
        
-       
+            <BatchForm  />
             
       
               <h2 className="batch-title">All Batches</h2>
@@ -53,7 +53,7 @@ class OverviewPage extends PureComponent {
                   ))
                 }
               </div>
-              <BatchForm  />
+              
       
              
       

@@ -13,17 +13,6 @@ export const colorArray = (number) => {
 }
  //////////
  
-export const data = [{name: 'donald', color : 'red'},{name: 'wally', color : 'green'},{name: 'micky', color : 'yellow'},
-{name: 'minnie', color : 'red'}]
-
-export const filteredStudents=(data)=> {
-const total = array.length
-const red = array.filter(object => object.color === 'red').length
-const green = array.filter(object => object.color === 'green').length
-const yellow = array.filter(object => object.color === 'yellow').length
-
-console.log(filteredStudents(data))
-}
 
 
 
