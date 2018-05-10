@@ -5,13 +5,14 @@
 //   }
 
 //try do a small test on getRandomNumber function, to fully understadn how testing works!
-  export const getRandomNumber = Math.floor(Math.random() * 10) 
+  export const getRandomNumber = Math.floor(Math.random() * 100) 
+  return getRandomNumber
 //insert logic percentages of randomness below
 //if statements- if number is lower,equal or higher to the percentages?
 
   const colorArray = (number) => {
     if(number <= 53) return ['RED']
-    if(number > 53 && num <= 81) return ['YELLOW']
+    if(number > 53 && number <= 81) return ['YELLOW']
     if(number > 81) return ['GREEN']
   }
 
