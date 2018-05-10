@@ -2,66 +2,67 @@ import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {getBatches, addBatch} from '../actions/batches'
 import {Link} from 'react-router-dom'
-import Paper from 'material-ui/Paper'
-import Button from 'material-ui/Button'
+// import Button from 'material-ui/Button'
+import BatchForm from './AddBatchForm'
 
 
 
 class OverviewPage extends PureComponent {
 
+ 
 
-    state = {
-        edit: false
-      }
-    
-      toggleEdit = () => {
-        this.setState({
-          edit: !this.state.edit
-        })
-      }
-
-    componentWillMount(props) {
-        this.props.getBatches(this.props.match.params.id)
+    componentWillMount() {
+        this.props.getBatches(this.props.match.params.batchNumber)
     }
 
-    createBatch = (batch) => {
-        this.props.createBatch(batch)
-        console.log('Created Batch')
-      }
-
+    
 
     render() {
          const {batches} = this.props
          console.log(batches)
-
+      
+         
+         
         
          
         return (
-
-      
-            <Paper className="outer-paper">
-            <h1>Overview of Batches</h1>
-          
             <div>
 
-            <button onClick={this.toggleEdit} className="new-batch-button">Create New Batch</button>
+       
+       
+            
       
-            
-           
-                <div className= "batches">
-                <Link to={`/batches/${batches.id}`}><h2>Batch 
-                {batches.batchId}</h2></Link>
-                </div>
+              <h2 className="batch-title">All Batches</h2>
+      
+              <div className="flex-container">
 
-
-           </div>
-            </Paper>
-            
-        )
-        
-    }
-}
-
+              
+                {
+                  batches
+                    .map((batch, index) => (
+      
+                      <div className="batch" key={index}>
+                      <Link to={ `/batches/${batch.batchNumber}` } className="batch-link">
+                        <div className="batch-header">
+                          <h3>Batch No. {batch.batchNumber}</h3>
+                        </div>
+      
+                        
+                      </Link>
+                      </div>
+                  ))
+                }
+              </div>
+              <BatchForm  />
+      
+             
+      
+            </div>
+      
+          )
+        }
+      }
+      
 
 const mapStateToProps = (state) => ({
       batches: state.batches,
