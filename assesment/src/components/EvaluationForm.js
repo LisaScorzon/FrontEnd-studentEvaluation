@@ -19,18 +19,22 @@ class EvalualtionForm extends PureComponent {
 
     handleChange = (e) => {
         const {name, value} = e.target
-        console.log('initial value', this.props.initialValues.id)
+        
         this.setState({
-            id: this.props.initialValues.id,
-            batch: this.props.student.batch,
+            //id: this.props.initialValues.id,
+            batch: this.props.student.batchNumber,
             student: this.props.student.id,
             [name] : value
         })
+
+        // this.setState({
+        //     batch:1,
+        //   [name]: value
+    
       };
 
 
     render() {
-        const initialValues = this.props.initialValues || {}
 
         return(
             <form onSubmit={this.handleSubmit}>
@@ -39,14 +43,14 @@ class EvalualtionForm extends PureComponent {
                     id='evaluation'
                     name='evaluation'
                     label='Add an evaluation'
-                    value={this.state.evaluation || initialValues.evaluation || ''}
+                    value={this.state.evaluation ||  ''}
                     onChange={this.handleChange}
                   />
                 <TextField
                     id='remarks'
                     name='remarks'
                     label='Remarks'
-                    value={this.state.remarks || initialValues.remarks || ''}
+                    value={this.state.remarks ||  ''}
                     onChange={this.handleChange}
                 />
                 <Button

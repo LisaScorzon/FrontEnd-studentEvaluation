@@ -11,8 +11,8 @@ import { GET_STUDENT, ADD_STUDENT, UPDATE_STUDENT } from '../actions/students'
 
                 
                         case ADD_STUDENT :
-                        
-                            return state.concat(payload)
+                        console.log('reducer add student passing')
+                            return payload
                             
                             
                             case UPDATE_STUDENT:
