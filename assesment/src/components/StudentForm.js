@@ -61,10 +61,10 @@ class StudentForm extends PureComponent {
 
 
          
+          
 
-
-         <Button type='submit' color="secondary"
-            variant="raised" className="random_student"
+         <Button type='submit' color="secondary" 
+            variant="raised" className="random_student" onClick={(event)=>{getRandomStudent(this.props.students,event)}}
         >
              Random Student  </Button>
 

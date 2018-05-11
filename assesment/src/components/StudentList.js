@@ -67,7 +67,7 @@ class StudentList extends PureComponent {
                    
                     <div
 					 className="photo" key={index}>
-					<img src = {student.photo} />
+					<img src = {student.photo} width='250' length='250'/>
                     <hr/>
 				</div>
                  

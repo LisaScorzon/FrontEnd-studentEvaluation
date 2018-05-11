@@ -77,16 +77,16 @@ export const getStudent = (studentNumber) => (dispatch) => {
 
 
 
-export const removedStudent = (studentNumber) => (dispatch, getState) => {
-  const state = getState()
+export const removedStudent = (id) => (dispatch) => {
+
   console.log('remove studentaction')
   request
-    .delete(`${baseUrl}/students/${studentNumber}`)
-    .then(response => {
+    .delete(`${baseUrl}/students/${id}`)
+    .then(result => {
       dispatch({
       type: REMOVED_STUDENT,
-      payload: response.body
-    })
+      payload: result.body
+      })
     })
     .catch(err => console.error(err))
 }
