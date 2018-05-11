@@ -1,4 +1,4 @@
-import { GET_STUDENT,  UPDATE_STUDENT, REMOVED_STUDENT } from '../actions/students'
+import { GET_STUDENT,  UPDATE_STUDENT } from '../actions/students'
 
 
 
@@ -12,10 +12,10 @@ import { GET_STUDENT,  UPDATE_STUDENT, REMOVED_STUDENT } from '../actions/studen
                 
 
                             
-                            case REMOVED_STUDENT:
+                            // case REMOVED_STUDENT:
                                
-                             console.log('reducer remove student')
-                                return state.filter(student => student.id !== payload.id)
+                            //  console.log('reducer remove student')
+                            //     return state.filter(student => student.id !== payload.id)
                             
                             
                             case UPDATE_STUDENT:

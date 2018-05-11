@@ -74,9 +74,11 @@ class StudentList extends PureComponent {
                  
                  </Link>
                  
-                     <Button type='submit' color="secondary" variant="raised" className="removed_student" onClick={() => this.removedStudent(student.studentNumber)}>Remove Student</Button>
-                      {/* color="secondary"
-                    variant="raised" className="removed_student" */}
+                     <Button type='submit' color="secondary" variant="raised" 
+                     className="removed_student" onClick={() => this.removedStudent(student.id)}
+                     >Remove Student</Button>
+                      
+                    
                    <hr/>
                     </div>
                     ))

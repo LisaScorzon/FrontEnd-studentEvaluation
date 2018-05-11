@@ -79,7 +79,7 @@ export const getStudent = (studentNumber) => (dispatch) => {
 
 export const removedStudent = (id) => (dispatch) => {
 
-  console.log('remove studentaction')
+  console.log('remove student action')
   request
     .delete(`${baseUrl}/students/${id}`)
     .then(result => {
