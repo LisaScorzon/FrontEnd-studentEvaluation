@@ -2,24 +2,39 @@
 import {getBatches, getBatch} from '../actions/batches'
 
 
-export const number = Math.floor(Math.random() * 100) 
 
-export const colors = (number) => {
-  if(number <= 53) return ['RED']
-  if(number > 53 && number <= 81) return ['YELLOW']
-  if(number > 81) return ['GREEN']
+export function getRandomStudent(arrayOfObjects,event) {
+  event.preventDefault()
 
-  console.log (colors(number));
+
+
+    const number = Math.floor(Math.random() * 100)
+
+    let color
+    if(number <= 53) color= 'RED'
+    if(number > 53 && number <= 81) color= 'YELLOW'
+    if(number > 81) color= 'GREEN'
+
+
+    const students = arrayOfObjects.filter(object => object.currentColor === color)
+    const randomStudent = students[Math.floor(Math.random()*students.length)]
+    console.log('button!')
+    console.log(randomStudent)
+    if (randomStudent !== undefined ){
+      return alert(randomStudent.fullName + ' has a ' + randomStudent.currentColor + ' evaluation!, Ask a question!!!!! :-) ')
+
+    }else {
+      return alert(' dude, no students with this evaluation exist....please click again ;-) ')
+
+}
+
 }
  
  
-//  const redStudents = batches.students.filter(student => student.currentColor === 'red').length;
-//  const yellowStudents = batches.students.filter(student => student.currentColor === 'yellow').length;
-//  const greenStudents = batches.students.filter(student => student.currentColor === 'green').length;
 
 
- const RandomStudent = (currentColor) => {
-  return currentColor[Math.floor(Math.random() * currentColor.length)].studentNumber
-}
+//  const RandomStudent = (currentColor) => {
+//   return currentColor[Math.floor(Math.random() * currentColor.length)].studentNumber
+// }
 
 
