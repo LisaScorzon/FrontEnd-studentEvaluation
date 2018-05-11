@@ -67,6 +67,14 @@ class StudentForm extends PureComponent {
             variant="raised" className="random_student"
         >
              Random Student  </Button>
+
+{/*              
+             <Button
+                    type='submit' color="secondary"
+                    variant="raised" className="removed_student"
+                     >
+                      Remove Student
+                     </Button> */}
       </form>
     )
   }

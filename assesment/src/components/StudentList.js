@@ -24,11 +24,12 @@ class StudentList extends PureComponent {
       componentWillMount() {
         this.props.getStudents(this.props.match.params.studentNumber)
         this.props.getBatch(this.props.match.params.BatchId)
-        //this.props.getRandomStudent(this.props.match.params.BatchId)
-        //this.props.createdStudent(this.props.match.parmas.BatchId)
+        
       }
     
-  
+      removedStudent = (studentNumber) => {
+        this.props.removedStudent(studentNumber)
+      }
 
 
     render() {
@@ -71,13 +72,11 @@ class StudentList extends PureComponent {
 				</div>
                  
                  </Link>
-                 <Button
-                    type='submit' color="secondary"
-                    variant="raised" className="removed_student"
-                     >
-                      Remove Student
-                     </Button>
-                     <hr/>
+                 
+                     <Button type='submit' color="secondary" variant="raised" className="removed_student" onClick={() => this.removedStudent(student.studentNumber)}>Remove Student</Button>
+                      {/* color="secondary"
+                    variant="raised" className="removed_student" */}
+                   <hr/>
                     </div>
                     ))
                 }
