@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react'
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
+import {Link} from 'react-router-dom'
 
 
 
@@ -53,8 +54,10 @@ export default class LoginForm extends PureComponent {
 							required
 						/>
 						</div>
-
+				<Link to = {`/batches`}>
 					<Button variant="raised" type="submit"> Submit </Button>
+			</Link>
+			
 			</form>
 		)
 	}

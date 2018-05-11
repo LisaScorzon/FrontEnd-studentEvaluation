@@ -3,14 +3,12 @@ import {connect} from 'react-redux'
 import {signup} from '../../actions/users'
 import SignupForm from './SignupForm'
 import {Redirect} from 'react-router-dom'
-//import '../../containers/QuizzDetails.css'
 
 class SignupPage extends PureComponent {
 	handleSubmit = (data) => {
-		console.log(this.props)
-		const { firstName, lastName, email, password, } = data
-		console.log(firstName)
-		this.props.postSignup(firstName, lastName, email, password)
+	
+		
+		this.props.postSignup(data)
 	}
 
 	render() {
