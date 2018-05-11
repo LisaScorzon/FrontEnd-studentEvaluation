@@ -99,25 +99,9 @@ export default class SignupForm extends PureComponent {
 						/>
 						</div>
 
-							<FormGroup row>
-	        <FormControlLabel
-	          control={
-	            <Checkbox
-								name='teacher'
-	              onChange={this.handleChange}
-	              value={`${this.state.teacher}` || '' }
-				  id='teacher'
-				  color='primary'
-	            />
-	          }
-	          label="Are you a teacher?"
-	        />
-	</FormGroup>
-
-				{
-					this.state.teacher
-				}
-
+							
+				
+			
 				{
 					this.state.password &&
 					this.state.confirmPassword &&

@@ -8,9 +8,9 @@ import {Redirect} from 'react-router-dom'
 class SignupPage extends PureComponent {
 	handleSubmit = (data) => {
 		console.log(this.props)
-		const { firstName, lastName, email, password, teacher } = data
-		// console.log(firstName)
-		this.props.postSignup(firstName, lastName, email, password, teacher)
+		const { firstName, lastName, email, password, } = data
+		console.log(firstName)
+		this.props.postSignup(firstName, lastName, email, password)
 	}
 
 	render() {

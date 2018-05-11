@@ -8,6 +8,7 @@ import { addStudent, removedStudent, getStudents, getStudent } from '../actions/
 
 import Student from './Student'
 import StudentForm from './StudentForm'
+import PercentageBar from './percentageBar'
 
 
 class StudentList extends PureComponent {
@@ -44,6 +45,7 @@ class StudentList extends PureComponent {
             
     
             <div className="flex-container">
+            <PercentageBar />
             <StudentForm onSubmit={this.props.createdStudent} batch={batch}/>
                 
                 {
@@ -51,10 +53,12 @@ class StudentList extends PureComponent {
                 .map((student,index) => (
                 
                 <div className="student" key={index}>
-                  <Link to={ `/students/${student.batchNumber}` } className="student-link">
+                  <Link to={ `/students/${student.studentNumber}` } className="student-link">
                   <div className="student-header">
                   <h3>Student Name: {student.fullName}</h3>
                   <h5 > Batch Number. {student.batchNumber} </h5>
+                  <h6>Last evaluation:{student.currentColor}</h6> 
+                  <h6> Evaluation date:{student.date}</h6>
                     </div>
                     
                     <div

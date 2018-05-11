@@ -21,7 +21,7 @@ class OverviewPage extends PureComponent {
 
     render() {
          const {batches, batch } = this.props
-         console.log(batches)
+         //console.log(batches.startDate)
       
          
          
@@ -34,7 +34,7 @@ class OverviewPage extends PureComponent {
             <BatchForm  />
             
       
-              <h2 className="batch-title">All Batches</h2>
+              <h1 className="batch-title">All Batches</h1>
       
               <div className="flex-container">
 
@@ -47,6 +47,11 @@ class OverviewPage extends PureComponent {
                       <Link to={ `/batches/${batch.batchNumber}` } className="batch-link">
                         <div className="batch-header">
                           <h3>Batch Number. {batch.batchNumber}</h3>
+                          <h5>Start Date. {batch.startDate}</h5>
+                          {console.log(batch.startDate, batch.endDate)}
+                          <h5>End Date. {batch.endDate}</h5>
+
+                          <hr/>
                         </div>
       
                         

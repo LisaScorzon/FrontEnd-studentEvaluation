@@ -13,9 +13,9 @@ export const colors = (number) => {
 }
  
  
- const redStudents = batch.students.filter(student => student.currentColor === 'red').length;
- const yellowStudents = batch.students.filter(student => student.currentColor === 'yellow').length;
- const greenStudents = batch.students.filter(student => student.currentColor === 'green').length;
+//  const redStudents = batches.students.filter(student => student.currentColor === 'red').length;
+//  const yellowStudents = batches.students.filter(student => student.currentColor === 'yellow').length;
+//  const greenStudents = batches.students.filter(student => student.currentColor === 'green').length;
 
 
  const RandomStudent = (currentColor) => {
