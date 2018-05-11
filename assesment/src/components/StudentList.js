@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import Button from 'material-ui/Button';
 
 import { getBatch } from '../actions/batches'
 import { addStudent, removedStudent, getStudents, getStudent } from '../actions/students'
@@ -59,8 +60,10 @@ class StudentList extends PureComponent {
                   <h5 > Batch Number. {student.batchNumber} </h5>
                   <h6>Last evaluation:{student.currentColor}</h6> 
                   <h6> Evaluation date:{student.date}</h6>
+                  
+
                     </div>
-                    
+                   
                     <div
 					 className="photo" key={index}>
 					<img src = {student.photo} />
@@ -68,6 +71,13 @@ class StudentList extends PureComponent {
 				</div>
                  
                  </Link>
+                 <Button
+                    type='submit' color="secondary"
+                    variant="raised" className="removed_student"
+                     >
+                      Remove Student
+                     </Button>
+                     <hr/>
                     </div>
                     ))
                 }
