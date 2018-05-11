@@ -13,7 +13,9 @@ import PercentageBar from './percentageBar'
 
 
 class StudentList extends PureComponent {
-
+    // state={
+    // batchId : Number((window.location.href).split('/').pop())
+    // }
 
     toggleEdit = () => {
         this.setState({
@@ -23,8 +25,7 @@ class StudentList extends PureComponent {
     
       componentWillMount() {
         this.props.getStudents(this.props.match.params.studentNumber)
-        this.props.getBatch(this.props.match.params.BatchId)
-        
+        this.props.getBatch(this.props.match.params.id)
       }
     
       removedStudent = (studentNumber) => {

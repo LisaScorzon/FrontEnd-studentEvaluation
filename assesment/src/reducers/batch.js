@@ -1,14 +1,20 @@
-import {ADD_BATCH} from '../actions/batches'
+import {GET_BATCHES, ADD_BATCH, GET_BATCH} from '../actions/batches'
 
-
-
-
-export default function (state = {}, {type, payload}) {
+export default function (state = [], {type, payload}) {
 	switch (type) {
-		case ADD_BATCH:
+    
+    
+      
+      case GET_BATCH:
+      console.log('getbatch1')
 			return payload
 
-		default:
-      return state
-	}
+    
+   
+      default:
+        return state
+    }
+
+
+    
 }
