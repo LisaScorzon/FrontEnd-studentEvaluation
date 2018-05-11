@@ -40,10 +40,17 @@ class EvalualtionForm extends PureComponent {
             <form onSubmit={this.handleSubmit}>
             
                 <TextField
-                    id='evaluation'
-                    name='evaluation'
+                    id='currentColor'
+                    name='currentColor'
                     label='Add an evaluation'
-                    value={this.state.evaluation ||  ''}
+                    value={this.state.currentColor ||  ''}
+                    onChange={this.handleChange}
+                  />
+                  <TextField
+                    id='date'
+                    name='date'
+                    label='Enter todays date'
+                    value={this.state.date ||  ''}
                     onChange={this.handleChange}
                   />
                 <TextField

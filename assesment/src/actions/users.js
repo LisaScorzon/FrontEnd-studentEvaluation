@@ -50,11 +50,13 @@ export const login = (email, password) => (dispatch) =>
 export const signup = (firstName, lastName, email, password ) => (dispatch) => {
 console.log(firstName)
 	request
+	//console.log('userAction')
 		.post(`${baseUrl}/users`)
 		.send({ firstName, lastName, email, password })
 		.then(result => {
 			dispatch({
-				type: USER_SIGNUP_SUCCESS
+				type: USER_SIGNUP_SUCCESS,
+				payload:result.body
 			})
 		})
 		.catch(err => {

@@ -48,9 +48,10 @@ class EvaluationPage extends PureComponent {
                 <h3>Batch Number: {student.batchNumber}</h3>
                 <h3>Student Id: {student.studentNumber}</h3>
                 <EvaluationForm/>
+                <h4>Last evaluation:{student.currentColor}</h4> <h4> Evaluation date:{student.date}</h4>
                 <img src = {student.photo} />
                 
-                <h4>Last evaluation:{student.currentColor}</h4> <h4> Evaluation date:{student.date}</h4>
+                
                 
                 {
                     !this.state.editStudent &&
