@@ -1,4 +1,4 @@
-import { GET_STUDENT, ADD_STUDENT, UPDATE_STUDENT, REMOVED_STUDENT } from '../actions/students'
+import { GET_STUDENT,  UPDATE_STUDENT, REMOVED_STUDENT } from '../actions/students'
 
 
 
@@ -10,9 +10,6 @@ import { GET_STUDENT, ADD_STUDENT, UPDATE_STUDENT, REMOVED_STUDENT } from '../ac
                             return payload
 
                 
-                        case ADD_STUDENT :
-                        console.log('reducer add student passing')
-                            return payload
 
                             
                             case REMOVED_STUDENT:

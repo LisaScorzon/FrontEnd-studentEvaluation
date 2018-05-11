@@ -1,4 +1,4 @@
-// add simple actions here that don't use endpoints and backend stu
+
 import * as request from 'superagent'
 //import {baseUrl} from '../constants'
 import {isExpired} from '../jwt'
@@ -47,16 +47,15 @@ export const login = (email, password) => (dispatch) =>
     	}
     })
 
-export const signup = (firstName, lastName, email, password ) => (dispatch) => {
-console.log(firstName)
+export const signup = (data ) => (dispatch) => {
 	request
 	//console.log('userAction')
 		.post(`${baseUrl}/users`)
-		.send({ firstName, lastName, email, password })
+		.send({ data})
 		.then(result => {
 			dispatch({
 				type: USER_SIGNUP_SUCCESS,
-				payload:result.body
+				// payload:result.body
 			})
 		})
 		.catch(err => {

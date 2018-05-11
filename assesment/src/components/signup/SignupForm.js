@@ -2,14 +2,13 @@ import React, {PureComponent} from 'react'
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button';
 import {FormGroup, FormControlLabel} from 'material-ui/Form'
-import Checkbox from 'material-ui/Checkbox'
+import {Link} from 'react-router-dom'
 
 export default class SignupForm extends PureComponent {
 	state = {}
 
 	handleSubmit = (e) => {
 		e.preventDefault()
-		// console.log(this)
 		this.props.onSubmit(this.state)
 	}
 
@@ -109,10 +108,11 @@ export default class SignupForm extends PureComponent {
 					<p style={{color:'red'}}>The passwords do not match!</p>
 				}
 
-
+				<Link to = {`/login`}>
 				<Button variant="raised" type="submit"> Submit </Button>
-
+				</Link>
 			</form>
 		)
 	}
 }
+
