@@ -55,7 +55,7 @@ export const getStudent = (studentNumber) => (dispatch) => {
         .then(result => {
           dispatch({
           type: GET_STUDENTSBATCH,
-              payload: result.body
+              payload: result.body.batchNumber
           })
         })
         .catch(err => alert(err))
@@ -79,13 +79,16 @@ export const getStudent = (studentNumber) => (dispatch) => {
 
 export const removedStudent = (studentNumber) => (dispatch, getState) => {
   const state = getState()
+  console.log('remove studentaction')
   request
     .delete(`${baseUrl}/students/${studentNumber}`)
-    .then(response => dispatch({
+    .then(response => {
+      dispatch({
       type: REMOVED_STUDENT,
-      payload: studentNumber
-    }))
-
+      payload: response.body
+    })
+    })
+    .catch(err => console.error(err))
 }
 
 export const updateStudent = (studentNumber, updates) => (dispatch, getState) => {
